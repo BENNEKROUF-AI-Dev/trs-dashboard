@@ -72,7 +72,7 @@ streamlit run dashboard.py
 
 ## 🏗️ Roadmap
 
-- [x] Project structure setup
+- [ ] Project structure setup
 - [ ] TRS calculation engine
 - [ ] Streamlit dashboard v1
 - [ ] Excel/CSV file upload
