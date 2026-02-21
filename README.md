@@ -32,15 +32,13 @@ You upload your GMAO export → you get your dashboard in seconds.
 trs-dashboard/
 │
 ├── data/
-│   └── sample_production_data.csv   # Sample dataset (fictitious)
+│   └── sample_production_data.csv
 │
 ├── src/
-│   ├── calcul_trs.py                # OEE/TRS calculation engine
-│   ├── pareto_arrets.py             # Downtime Pareto analysis
-│   └── utils.py                    # Helper functions
+│   └── calcul_trs.py
 │
-├── dashboard.py                     # Main Streamlit app
-├── requirements.txt                 # Dependencies
+├── dashboard.py
+├── requirements.txt
 └── README.md
 ```
 
@@ -48,14 +46,9 @@ trs-dashboard/
 
 ## 🚀 How to run it
 ```bash
-# Clone the repo
 git clone https://github.com/BENNEKROUF-AI-Dev/trs-dashboard.git
 cd trs-dashboard
-
-# Install dependencies
 pip install -r requirements.txt
-
-# Launch the dashboard
 streamlit run dashboard.py
 ```
 
@@ -80,8 +73,8 @@ streamlit run dashboard.py
 ## 🏗️ Roadmap
 
 - [x] Project structure setup
-- [x] Project structure setup
 - [ ] TRS calculation engine
+- [ ] Streamlit dashboard v1
 - [ ] Excel/CSV file upload
 - [ ] Pareto downtime chart
 - [ ] PDF report export
