@@ -56,9 +56,8 @@ streamlit run dashboard.py
 
 ## 📊 Dashboard Preview
 
-![TRS Dashboard Preview](dashboard-preview 1.png)
-![TRS Dashboard Preview](dashboard-preview 2.png)
-
+![TRS Dashboard - KPIs](dashboard-preview-1.png)
+![TRS Dashboard - Charts](dashboard-preview-2.png)
 ---
 
 ## 🔧 Tech Stack
