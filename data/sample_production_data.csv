@@ -1,0 +1,13 @@
+heure,production,objectif,arret_minutes,cause_arret
+06:00,142,150,8,Changement serie
+07:00,158,150,0,
+08:00,149,150,12,Panne mecanique
+09:00,171,150,0,
+10:00,138,150,22,Attente matiere
+11:00,162,150,0,
+12:00,95,150,45,Changement serie
+13:00,155,150,0,
+14:00,168,150,5,Reglage
+15:00,144,150,18,Panne mecanique
+16:00,173,150,0,
+17:00,160,150,8,Nettoyage
