@@ -73,8 +73,8 @@ streamlit run dashboard.py
 ## 🏗️ Roadmap
 
 - [x] Project structure setup
-- [ ] TRS calculation engine
-- [ ] Streamlit dashboard v1
+- [x] TRS calculation engine
+- [x] Streamlit dashboard v1
 - [ ] Excel/CSV file upload
 - [ ] Pareto downtime chart
 - [ ] PDF report export
