@@ -14,7 +14,7 @@ if uploaded_file is not None:
         df = pd.read_csv(uploaded_file)
     else:
         df = pd.read_excel(uploaded_file)
-    st.sidebar.success(f"✅ Fichier chargé : {uploaded_file.name}")
+    st.sidebar.success(f"Fichier chargé : {uploaded_file.name}")
 else:
     data = {
         "heure": ["06:00","07:00","08:00","09:00","10:00","11:00","12:00","13:00","14:00","15:00","16:00","17:00"],
@@ -24,7 +24,7 @@ else:
         "cause_arret": ["Changement serie","","Panne mecanique","","Attente matiere","","Changement serie","","Reglage","Panne mecanique","","Nettoyage"]
     }
     df = pd.DataFrame(data)
-    st.sidebar.info("📊 Données de démonstration chargées")
+    st.sidebar.info("Donnees de demonstration chargees")
 
 # ─── CALCULS ───────────────────────────────────────────────────
 production_reelle = df["production"].sum()
@@ -36,20 +36,22 @@ df_arrets = df[df["cause_arret"].notna() & (df["cause_arret"] != "")]
 pareto = df_arrets.groupby("cause_arret")["arret_minutes"].sum().sort_values(ascending=False).reset_index()
 pareto.columns = ["cause", "duree_minutes"]
 
-st.markdown("## ⚙️ TRS Dashboard — Suivi de Production")
-st.markdown("*Dashboard de suivi TRS et performance de production destiné aux PME industrielles.*")
+# ─── HEADER ────────────────────────────────────────────────────
+st.markdown("## Usine Alpha — TRS Dashboard")
+st.markdown("*Dashboard de suivi TRS et performance de production destine aux PME industrielles.*")
 st.markdown("---")
 
 # ─── KPIs ──────────────────────────────────────────────────────
+col1, col2, col3, col4 = st.columns(4)
 with col1:
     couleur = "🟢" if trs >= 85 else "🟡" if trs >= 70 else "🔴"
     st.metric(label=f"{couleur} TRS Global", value=f"{trs}%", delta="Obj: 85%")
 with col2:
-    st.metric(label="🏭 Disponibilité Machine", value=f"{int(production_reelle):,} pcs")
+    st.metric(label="Disponibilite Machine", value=f"{int(production_reelle):,} pcs")
 with col3:
-    st.metric(label="🎯 Performance Production", value=f"{int(production_theorique):,} pcs")
+    st.metric(label="Performance Production", value=f"{int(production_theorique):,} pcs")
 with col4:
-    st.metric(label="⏱️ Arrêts Cumulés", value=f"{int(total_arrets)} min"))} min")
+    st.metric(label="Arrets Cumules", value=f"{int(total_arrets)} min")
 
 st.markdown("---")
 
@@ -57,7 +59,7 @@ st.markdown("---")
 col_left, col_right = st.columns([2, 1])
 
 with col_left:
-    st.markdown("#### 📈 Production horaire vs Objectif")
+    st.markdown("#### Production horaire vs Objectif")
     fig = go.Figure()
     fig.add_trace(go.Scatter(x=df["heure"], y=df["objectif"], name="Objectif", line=dict(color="#3b82f6", dash="dash", width=2)))
     fig.add_trace(go.Scatter(x=df["heure"], y=df["production"], name="Production", line=dict(color="#f97316", width=3), fill="tozeroy", fillcolor="rgba(249,115,22,0.1)"))
@@ -67,7 +69,7 @@ with col_left:
     st.plotly_chart(fig, use_container_width=True)
 
 with col_right:
-    st.markdown("#### 🔻 Pareto Arrêts")
+    st.markdown("#### Pareto Arrets")
     fig2 = px.bar(pareto, x="duree_minutes", y="cause", orientation="h", color="duree_minutes", color_continuous_scale=["#22c55e","#eab308","#ef4444"], text="duree_minutes")
     fig2.update_traces(texttemplate="%{text} min", textposition="outside")
     fig2.update_layout(paper_bgcolor="#1e2130", plot_bgcolor="#1e2130", font_color="#94a3b8", showlegend=False, coloraxis_showscale=False, height=300, margin=dict(l=20,r=20,t=20,b=20), yaxis=dict(autorange="reversed"))
@@ -75,7 +77,7 @@ with col_right:
     st.plotly_chart(fig2, use_container_width=True)
 
 st.markdown("---")
-st.markdown("#### 📋 Détail horaire")
+st.markdown("#### Detail horaire")
 st.dataframe(df, use_container_width=True, hide_index=True)
 
 st.markdown("---")
