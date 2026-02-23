@@ -9,7 +9,7 @@ import plotly.graph_objects as go
 import sys
 import os
 
-sys.path.append(os.path.join(os.path.dirname(__file__), "src"))
+sys.path.append("src")
 from calcul_trs import charger_donnees, calculer_trs, calculer_pareto_arrets
 
 # ─── CONFIG PAGE ───────────────────────────────────────────────
