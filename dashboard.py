@@ -10,7 +10,7 @@ import sys
 import os
 
 sys.path.append("src")
-from calcul_trs import charger_donnees, calculer_trs, calculer_pareto_arrets
+from calcul_trs import charger_donnees, calculer_trs, calculer_pareto_arrets 
 
 # ─── CONFIG PAGE ───────────────────────────────────────────────
 st.set_page_config(
