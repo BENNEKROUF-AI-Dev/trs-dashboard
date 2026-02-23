@@ -36,21 +36,20 @@ df_arrets = df[df["cause_arret"].notna() & (df["cause_arret"] != "")]
 pareto = df_arrets.groupby("cause_arret")["arret_minutes"].sum().sort_values(ascending=False).reset_index()
 pareto.columns = ["cause", "duree_minutes"]
 
-# ─── HEADER ────────────────────────────────────────────────────
 st.markdown("## ⚙️ TRS Dashboard — Suivi de Production")
+st.markdown("*Dashboard de suivi TRS et performance de production destiné aux PME industrielles.*")
 st.markdown("---")
 
 # ─── KPIs ──────────────────────────────────────────────────────
-col1, col2, col3, col4 = st.columns(4)
 with col1:
     couleur = "🟢" if trs >= 85 else "🟡" if trs >= 70 else "🔴"
     st.metric(label=f"{couleur} TRS Global", value=f"{trs}%", delta="Obj: 85%")
 with col2:
-    st.metric(label="🏭 Production Réelle", value=f"{int(production_reelle):,} pcs")
+    st.metric(label="🏭 Disponibilité Machine", value=f"{int(production_reelle):,} pcs")
 with col3:
-    st.metric(label="🎯 Production Théorique", value=f"{int(production_theorique):,} pcs")
+    st.metric(label="🎯 Performance Production", value=f"{int(production_theorique):,} pcs")
 with col4:
-    st.metric(label="⏱️ Arrêts Cumulés", value=f"{int(total_arrets)} min")
+    st.metric(label="⏱️ Arrêts Cumulés", value=f"{int(total_arrets)} min"))} min")
 
 st.markdown("---")
 
